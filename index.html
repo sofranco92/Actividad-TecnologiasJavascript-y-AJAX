@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="es" class="h-100">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UNIR - Actividad: Tecnologias Javascript y AJAX</title>
+    <link rel="icon" href="favicon.ico">
+    <!-- Codigo CSS adicional -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- Codigo CSS del framework Bootstrap V5.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+
+<body class="d-flex flex-column h-100">
+    <header class="mb-5">
+        <!-- Menu -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark d-flex justify-content-end">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Ejercicios Javascript
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="#js-1">Ejercicio 1 - Comprobar palindromo</a></li>
+                                <li><a class="dropdown-item" href="#js-2">Ejercicio 2 - Numero mayor</a></li>
+                                <li><a class="dropdown-item" href="#js-3">Ejercicio 3 - Obtener vocales</a></li>
+                                <li><a class="dropdown-item" href="#js-4">Ejercicio 4 - Contar Vocales</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#ajax">Ejercicio AJAX</a></li>
+                    </ul>
+                </div>
+            </div>
+            <a class="navbar-brand" href="javascript:void(0);">Tecnologias Javascript y AJAX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+        <!-- ########################################################### -->
+    </header>
+
+    <!-- Begin page content -->
+    <main class="flex-shrink-0 mt-5">
+        <div class="container">
+            <!-- Ejercicios Javascript -->
+            <div class="card text-bg-dark">
+                <div class="card-header">
+                    <h3>Ejercicios Javascripts</h3>
+                </div>
+                <div class="card-body text-dark">
+                    <!-- Seccion Javascript - Ejercicio 1 -->
+                    <section id="js-1" class="mb-5">
+                        <div class="card border-secondary text-center">
+                            <div class="card-header text-bg-secondary">
+                                <h5 class="card-title"> Ejercicio 1 - Detectar si la cadena de entrada es un palindromo
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Por favor ingrese una palabra en el cuadro de texto y presione el
+                                    boton comprobar.</p>
+                                <form class="row g-3 align-items-center" id="comprobarPalindromo" novalidate>
+                                    <div class="col-4 offset-4">
+                                        <label for="textoComprobar" class="form-label">Palabra a comprobar</label>
+                                        <input type="text" class="form-control" id="textoComprobar" required>
+                                    </div>
+                                    <div id="resultadoPalindromo"></div>
+                                    <div class="col-4 offset-4">
+                                        <button class="btn btn-primary" id="botonComprobarTexto"
+                                            type="submit">comprobar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ########################################################### -->
+
+                    <!-- Seccion Javascript - Ejercicio 2 -->
+                    <section id="js-2" class="mb-5">
+                        <div class="card border-secondary text-center">
+                            <div class="card-header text-bg-secondary">
+                                <h5 class="card-title"> Ejercicio 2 - validar que numero es mayor que el otro
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Por favor ingrese dos numeros y presione el boton comprobar.</p>
+                                <form class="row g-3 align-items-center needs-validation" id="comprobarNumeroMayor"
+                                    novalidate>
+                                    <div class="col-3 offset-3">
+                                        <label for="Numero1" class="form-label">Primer Numero</label>
+                                        <input type="number" class="form-control" id="Numero1"
+                                            onkeypress="return soloNumeros(event)" required>
+                                    </div>
+                                    <div class="col-3">
+                                        <label for="Numero2" class="form-label">Segundo Numero</label>
+                                        <input type="number" class="form-control" id="Numero2"
+                                            onkeypress="return soloNumeros(event)" required>
+                                    </div>
+                                    <div id="resultadoNumeroMayor"></div>
+                                    <div class="col-4 offset-4">
+                                        <button class="btn btn-primary" id="botonComprobarNumeroMayor"
+                                            type="submit">comprobar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ########################################################### -->
+
+                    <!-- Seccion Javascript - Ejercicio 3 -->
+                    <section id="js-3" class="mb-5">
+                        <div class="card border-secondary text-center">
+                            <div class="card-header text-bg-secondary">
+                                <h5 class="card-title"> Ejercicio 3 - Mostrar vocales de una palabra o frase
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Por favor ingrese una palabra o frase en el cuadro de texto y
+                                    presione el
+                                    boton mostrar vocales.</p>
+                                <form class="row g-3 align-items-center" id="mostrarVocales" novalidate>
+                                    <div class="col-4 offset-4">
+                                        <label for="textoMostrarVocales" class="form-label">Palabra a comprobar</label>
+                                        <input type="text" class="form-control" id="textoMostrarVocales" required>
+                                    </div>
+                                    <div id="resultadoMostrarVocales"></div>
+                                    <div class="col-4 offset-4">
+                                        <button class="btn btn-primary" id="botonMostrarVocales" type="submit">mostrar
+                                            vocales</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ########################################################### -->
+
+                    <!-- Seccion Javascript - Ejercicio 4 -->
+                    <section id="js-4" class="mb-5">
+                        <div class="card border-secondary text-center">
+                            <div class="card-header text-bg-secondary">
+                                <h5 class="card-title"> Ejercicio 4 - Contar vocales de una palabra o frase
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Por favor ingrese una palabra o frase en el cuadro de texto y
+                                    presione el
+                                    boton contar vocales.</p>
+                                <form class="row g-3 align-items-center" id="contarVocales" novalidate>
+                                    <div class="col-4 offset-4">
+                                        <label for="textoContarVocales" class="form-label">Palabra a comprobar</label>
+                                        <input type="text" class="form-control" id="textoContarVocales" required>
+                                    </div>
+                                    <div id="resultadoContarVocales"></div>
+                                    <div class="col-4 offset-4">
+                                        <button class="btn btn-primary" id="botonContarVocales" type="submit">contar
+                                            vocales</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ########################################################### -->
+                </div>
+            </div>
+            <!-- ########################################################### -->
+
+            <!-- Ejercicios AJAX -->
+            <div class="card text-bg-dark mt-5">
+                <div class="card-header">
+                    <h3>Ejercicios AJAX</h3>
+                </div>
+                <div class="card-body text-dark">
+                    <!-- Seccion AJAX -->
+                    <section id="ajax" class="mb-5">
+                        <div class="card border-secondary text-center">
+                            <div class="card-header text-bg-secondary">
+                                <h5 class="card-title"> Peticiones AJAX
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">Por favor ingrese una URL y luego presione el boton mostrar
+                                    contenido.</p>
+                                <form class="row g-3 align-items-center" id="verificarURL" novalidate>
+                                    <div class="col-4 offset-4">
+                                        <label for="urlPagina" class="form-label">URL de la pagina</label>
+                                        <input type="text" class="form-control" id="urlPagina" required>
+                                    </div>
+                                    <div class="col-4 offset-4">
+                                        <button class="btn btn-primary" id="botonVerificarURL" type="submit">mostrar
+                                            contenido</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- ########################################################### -->
+                </div>
+            </div>
+            <!-- ########################################################### -->
+        </div>
+    </main>
+
+    <!-- Modal donde se mostrara la respuesta de la solicitud AJAX-->
+    <div id="modalPeticionAJAX" class="modal" tabindex="-1">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" data-bs-backdrop="static">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title">Resultado petición AJAX</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-5">
+                            <div class="col-6">
+                                <h5>Estado de solicitud AJAX</h5>
+                                <div class="border bg-secondary bg-opacity-10 p-3 border-1 rounded border-secondary" style="white-space: pre;" id="estadoURL"></div>
+                            </div>
+                            <div class="col-6 mt-2">
+                                <h5>Codigo de estado respuesta</h5>
+                                <div class="border bg-secondary bg-opacity-10 p-3 border-1 rounded border-secondary" style="white-space: pre;" id="codigoEstadoURL"></div>
+                            </div>
+                        </div>
+                        <div class="col-7">
+                            <h5>Cabeceras HTTP de la solicitud AJAX</h5>
+                            <div class="border bg-secondary bg-opacity-10 p-3 border-1 rounded border-secondary" style="white-space: pre;" id="cabecerasURL"></div>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12 border p-3 border-1 rounded border-secondary">
+                            <h5>Contenido de URL ingresada</h5>
+                            <code style="white-space: pre; word-break:break-all;" id="contenidoURL"></code>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-dark text-white">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light text-center">
+        <div class="container">
+            <span class="text-muted">
+                UNIR - Actividad: Tecnologias Javascript y AJAX
+                <br />
+                <small>Realizado por Samir Franco</small>
+            </span>
+        </div>
+    </footer>
+    <!-- ########################################################### -->
+
+    <!-- Codigo Javascript del framework Bootstrap V5.2 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+        <!-- Codigo Javascript adicional -->
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
